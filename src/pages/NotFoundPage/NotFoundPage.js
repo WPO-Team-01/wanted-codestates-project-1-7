@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const Btn = styled.button`
 `;
 
 const NotFound = () => {
+  console.log(useLocation());
   return (
     <Container>
       <MessageBox>올바르지 않은 접근입니다.</MessageBox>
