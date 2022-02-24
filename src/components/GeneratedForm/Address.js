@@ -8,7 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 0 auto;
+  margin-bottom: 20px;
 `;
 const Text = styled.div`
   display: flex;

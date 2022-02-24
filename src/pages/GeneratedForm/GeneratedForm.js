@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Form from "@/components/GeneratedForm/Form";
+import Name from "@/components/GeneratedForm/Name";
+import PhoneNumber from "@/components/GeneratedForm/PhoneNumber";
 import Address from "@/components/GeneratedForm/Address";
 import DropDown from "@/components/GeneratedForm/DropDown";
 import InputFile from "@/components/GeneratedForm/InputFile";
@@ -27,8 +28,8 @@ const GeneratedForm = () => {
   return (
     <Container>
       <SubContainer>
-        <Form />
-        <Form />
+        <Name />
+        <PhoneNumber />
         <Address />
         <DropDown />
         <InputFile />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 0 auto;
+  margin-bottom: 20px;
 `;
 const Text = styled.div`
   display: flex;
@@ -32,18 +32,29 @@ const Caution = styled.div`
   font-size: 12px;
 `;
 
-const Form = ({
+const Name = ({
   type = "text",
   title = "이름",
   caution = "이름 항목은 필수 정보입니다",
 }) => {
+  const [name, setName] = useState("");
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <Container>
       <Text>{title}</Text>
-      <Input type={type}></Input>
-      <Caution>{caution}</Caution>
+      <Input
+        type={type}
+        value={name}
+        onChange={(e) => onChangeName(e)}
+        placeholder="주민등록상 이름 입력"
+      />
+      {name === "" ? <Caution>{caution}</Caution> : null}
     </Container>
   );
 };
 
-export default Form;
+export default Name;

@@ -7,6 +7,7 @@ const Container = styled.div`
   height: 254px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 `;
 const Text = styled.div`
   display: flex;
