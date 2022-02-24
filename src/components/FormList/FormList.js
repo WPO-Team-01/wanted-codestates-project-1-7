@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper2 = styled.div`
   position: absolute;
   border: 1px solid red;
   width: 50%;
@@ -13,9 +13,9 @@ const Title = styled.h2`
 `;
 function FormList() {
   return (
-    <Wrapper>
+    <Wrapper2>
       <Title>Form 제목</Title>
-    </Wrapper>
+    </Wrapper2>
   );
 }
 export default FormList;

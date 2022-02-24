@@ -2,10 +2,13 @@ import React from 'react';
 import FormList from '@/components/FormList/FormList';
 import styled from 'styled-components';
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  position: absolute;
+  top: 10%;
+`;
 const Button = styled.button`
   position: absolute;
-  top: 70 %;
+  bottom: 0%;
   width: 30%;
   height: 5%;
   background-color: pink;
@@ -19,7 +22,7 @@ const Main = () => {
     <>
       <Title>생성된 폼 목록</Title>
       <FormList />
-      {/* <Button>폼 생성하기</Button> */}
+      <Button>폼 생성하기</Button>
     </>
   );
 };
