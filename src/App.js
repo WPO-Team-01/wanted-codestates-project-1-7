@@ -5,6 +5,7 @@ import GlobalStyle from "@/styles/GlobalStyle";
 import { Container } from "@/styles/Container";
 
 import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
+import Agreement from "./pages/GeneratedForm/Agreement";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/*" element={<NotFoundPage />}></Route>
 
           <Route path="/1" element={<GeneratedForm />}></Route>
+          <Route path="/2" element={<Agreement />}></Route>
         </Routes>
       </BrowserRouter>
     </Container>
