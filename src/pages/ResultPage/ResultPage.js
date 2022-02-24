@@ -37,9 +37,9 @@ const ResultPage = () => {
     const { formResult } = await fetch(
       `https://damp-dawn-99272.herokuapp.com/api/forms/${formId}/result`
     ).then((response) => response.json());
+    setIsLoading(false);
     if (!formResult) return;
     setFormList(formResult);
-    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -50,7 +50,13 @@ const ResultPage = () => {
     <Container>
       {isLoading && <TitleBox>로딩중입니다. 잠시만 기다려주세요.</TitleBox>}
       {!isLoading && !formList.length && (
-        <TitleBox>일치하는 데이터가 없습니다. 폼 ID를 확인해주세요</TitleBox>
+        <>
+          <TitleBox>
+            일치하는 데이터가 없습니다. 일시적인 오류일 수도 있으니 새로고침을
+            눌러주세요.
+          </TitleBox>
+          <TitleBox>오류가 계속된다면, 폼 ID를 확인해주세요</TitleBox>
+        </>
       )}
       {!isLoading && formList.length > 0 && (
         <>
