@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage } from "@/pages";
-import { GlobalStyle } from "@root/styles/GlobalStyle";
+// import { GlobalStyle } from "@root/styles/GlobalStyle";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
