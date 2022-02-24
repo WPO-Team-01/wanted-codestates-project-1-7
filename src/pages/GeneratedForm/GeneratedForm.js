@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Form from "@/components/Generated/Form";
-import Address from "@/components/Generated/Address";
-import DropDown from "@/components/Generated/DropDown";
-import InputFile from "@/components/Generated/InputFile";
-import Button from "@/components/Generated/Button";
+import Form from "@/components/GeneratedForm/Form";
+import Address from "@/components/GeneratedForm/Address";
+import DropDown from "@/components/GeneratedForm/DropDown";
+import InputFile from "@/components/GeneratedForm/InputFile";
+import Button from "@/components/GeneratedForm/Button";
+import CheckBox from "@/components/GeneratedForm/CheckBox";
 
 const Container = styled.section`
   display: flex;
@@ -33,6 +34,7 @@ const GeneratedForm = () => {
         <Address />
         <DropDown />
         <InputFile />
+        <CheckBox />
         <Button />
       </SubContainer>
     </Container>

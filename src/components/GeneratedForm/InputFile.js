@@ -12,6 +12,7 @@ const Text = styled.div`
   width: 100%;
   height: 20px;
   font-size: 12px;
+  font-weight: bold;
 `;
 const Address = styled.input`
   width: 360px;

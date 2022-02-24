@@ -14,8 +14,17 @@ const Text = styled.div`
   width: 100%;
   height: 20px;
   font-size: 12px;
+  font-weight: bold;
 `;
-const Input = styled.input`
+const Select = styled.select`
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 0.5rem;
+  background: #f8fafb;
+  margin: auto;
+`;
+const Option = styled.option`
   width: 100%;
   height: 54px;
   border: none;
@@ -24,13 +33,17 @@ const Input = styled.input`
   margin: auto;
 `;
 
-const Address = ({ title = "배송지" }) => {
+const DropDown = ({ title = "옵션1", options = ["S", "L", "XL", "XXL"] }) => {
   return (
     <Container>
       <Text>{title}</Text>
-      <Input />
+      <Select>
+        {options.map((option) => (
+          <Option value={option}>{option}</Option>
+        ))}
+      </Select>
     </Container>
   );
 };
 
-export default Address;
+export default DropDown;
