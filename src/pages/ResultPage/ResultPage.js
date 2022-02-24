@@ -1,7 +1,7 @@
 import React from "react";
 import { Result } from "@/components";
 
-const ResultPage = () => {
+const ResultPage = (props) => {
   return (
     <div>
       <Result></Result>
