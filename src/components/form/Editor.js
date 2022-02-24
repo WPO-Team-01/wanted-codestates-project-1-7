@@ -3,15 +3,15 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GoListOrdered } from "react-icons/go";
 import styled from "styled-components";
 
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
 const Editor = ({ editor }) => {
   if (!editor) {
     return null;
   }
-
-  const Button = styled.button`
-    background-color: transparent;
-    border: none;
-  `;
 
   return (
     <>

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage } from "@/pages";
 import GlobalStyle from "@/styles/GlobalStyle";
 import styled from "styled-components";
+import CreateFormPage from "./pages/CreateFormPage/CreateFormPage";
 
 const Layout = styled.div`
   margin: 0 auto;
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/result/:id" element={<ResultPage />}></Route>
+          <Route path="/create" element={<CreateFormPage />} />
           <Route path="/*" element={<NotFoundPage />}></Route>
         </Routes>
       </BrowserRouter>
