@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 const Wrapper2 = styled.div`
-  position: absolute;
-  border: 1px solid red;
-  width: 50%;
-  height: 10%;
+  border: 1px solid #ccc;
+  width: 70%;
+  height: 15%;
   border-radius: 10px;
 `;
 const Title = styled.h2`
-  width: 20%;
+  width: 25%;
   margin-left: 5%;
 `;
 function FormList() {
