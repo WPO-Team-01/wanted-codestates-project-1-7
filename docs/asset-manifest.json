@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://wpo-team-01.github.io/wanted-codestates-project-1-7/static/css/main.073c9b0a.css",
+    "main.js": "https://wpo-team-01.github.io/wanted-codestates-project-1-7/static/js/main.be61050c.js",
+    "index.html": "https://wpo-team-01.github.io/wanted-codestates-project-1-7/index.html",
+    "main.073c9b0a.css.map": "https://wpo-team-01.github.io/wanted-codestates-project-1-7/static/css/main.073c9b0a.css.map",
+    "main.be61050c.js.map": "https://wpo-team-01.github.io/wanted-codestates-project-1-7/static/js/main.be61050c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.be61050c.js"
+  ]
+}
