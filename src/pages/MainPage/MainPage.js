@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import FormList from '@/components/FormList/FormList';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import FormList from "@/components/FormList/FormList";
+import styled from "styled-components";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +53,7 @@ const Main = () => {
   const getFormList = async () => {
     try {
       const res = await axios.get(
-        'https://damp-dawn-99272.herokuapp.com/api/forms',
+        "https://damp-dawn-99272.herokuapp.com/api/forms",
       );
       if (res.data) {
         setIsLoading(false);
@@ -68,11 +69,13 @@ const Main = () => {
     <Container>
       <Title>생성된 폼 목록</Title>
       <BoxWrapper>
-        {forms.map(form => (
+        {forms.map((form) => (
           <FormList form={form} key={form.id} />
         ))}
       </BoxWrapper>
-      <Button>폼 생성하기</Button>
+      <Link to="/create">
+        <Button>폼 생성하기</Button>
+      </Link>
     </Container>
   );
 };
