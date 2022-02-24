@@ -2,9 +2,10 @@ import React from "react";
 import { IoCheckboxOutline } from "react-icons/io5";
 import styled from "styled-components";
 
-const Phone = styled.div`
+const Label = styled.div`
   width: 30%;
-  border: 2px solid red;
+  border: 1px dotted gray;
+  border-radius: 5px;
 `;
 
 const SavedForm = (props) => {
@@ -14,9 +15,7 @@ const SavedForm = (props) => {
     <div>
       <IoCheckboxOutline size="30" />
       {savedForm.map((el) => {
-        if (el.id === "phone") {
-          return <Phone>{el.label}</Phone>;
-        }
+        return <Label>{el.label}</Label>;
       })}
     </div>
   );

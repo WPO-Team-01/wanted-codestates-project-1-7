@@ -16,13 +16,6 @@ const Title = styled.h2`
 
 function FormList(props) {
   const { form } = props;
-  // const [SavedForm, setSavedForms] = useState({
-  //   id: form.data.id,
-  //   type: form.data.type,
-  //   required: form.data.required,
-  //   label: form.data.label,
-  //   placeholder: form.data.placeholder,
-  // });
   const [savedForm, setSavedForms] = useState([]);
 
   useEffect(() => {
