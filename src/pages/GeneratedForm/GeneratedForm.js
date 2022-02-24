@@ -13,7 +13,6 @@ const Container = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  border: black solid 1px;
 `;
 
 const SubContainer = styled.section`
@@ -22,7 +21,6 @@ const SubContainer = styled.section`
   align-items: center;
   width: 448px;
   height: 100%;
-  border: blue solid 1px;
 `;
 
 const GeneratedForm = () => {

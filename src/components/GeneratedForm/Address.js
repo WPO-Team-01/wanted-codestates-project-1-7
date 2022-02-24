@@ -33,12 +33,28 @@ const Address = ({ title = "배송지" }) => {
   const handleModal = () => {
     setOpen((open) => !open);
   };
+  const deleteInputValue = () => {
+    setAddress((address) => "");
+  };
+
   return (
     <>
-      {open ? <Box handleModal={handleModal} setAddress={setAddress} /> : null}
+      {open ? (
+        <Box
+          handleModal={handleModal}
+          address={address}
+          setAddress={setAddress}
+        />
+      ) : null}
       <Container>
         <Text>{title}</Text>
-        <Input onClick={handleModal} value={address} />
+        <Input
+          onClick={() => {
+            handleModal();
+            deleteInputValue();
+          }}
+          value={address}
+        />
       </Container>
     </>
   );

@@ -43,17 +43,22 @@ const Icon = styled.span`
   cursor: pointer;
 `;
 
-const Box = ({ handleModal, setAddress }) => {
+const Box = ({ handleModal, address, setAddress }) => {
   return (
     <>
-      <Wrapper onClick={handleModal} />
-      <Container onClick={(e) => e.stopPropagation()}>
-        <Header>
-          <Icon onClick={handleModal}>&times;</Icon>
-          <Text>배송 주소</Text>
-        </Header>
-        <DaumPost setAddress={setAddress} />
-      </Container>
+      {address === "" ? (
+        <>
+          <Wrapper onClick={handleModal} />
+          <Container onClick={(e) => e.stopPropagation()}>
+            <Header>
+              <Icon onClick={handleModal}>&times;</Icon>
+              <Text>배송 주소</Text>
+            </Header>
+
+            <DaumPost setAddress={setAddress} />
+          </Container>
+        </>
+      ) : null}
     </>
   );
 };
