@@ -2,14 +2,19 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage } from "@/pages";
 import GlobalStyle from "@/styles/GlobalStyle";
-import { Container } from "@/styles/Container";
+import styled from "styled-components";
+
+const Layout = styled.div`
+  margin: 0 auto;
+  max-width: 1000px;
+`;
 
 import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
 import Agreement from "./pages/GeneratedForm/Agreement";
 
 function App() {
   return (
-    <Container>
+    <Layout>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -21,7 +26,7 @@ function App() {
           <Route path="/2" element={<Agreement />}></Route>
         </Routes>
       </BrowserRouter>
-    </Container>
+    </Layout>
   );
 }
 
