@@ -8,8 +8,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  border: 1px solid #000;
-  width: 100vw;
   min-height: 70vh;
   padding: 0.5rem;
 `;
@@ -20,6 +18,7 @@ const TitleBox = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 0.5rem;
+  width: 100%;
 `;
 
 const ResultBox = styled.div`

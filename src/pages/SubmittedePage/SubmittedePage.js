@@ -8,7 +8,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-evenly;
   gap: 1rem;
-  border: 1px solid #000;
   width: 100%;
   min-height: 70vh;
   padding: 0.5rem;
@@ -31,6 +30,12 @@ const BtnBox = styled.div`
 `;
 
 const Btn = styled.button`
+  background-color: skyblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 500;
   cursor: pointer;
 `;
 
