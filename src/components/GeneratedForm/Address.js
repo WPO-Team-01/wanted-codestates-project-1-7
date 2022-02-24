@@ -28,16 +28,17 @@ const Input = styled.input`
 
 const Address = ({ title = "배송지" }) => {
   const [open, setOpen] = useState(false);
+  const [address, setAddress] = useState("");
 
   const handleModal = () => {
     setOpen((open) => !open);
   };
   return (
     <>
-      {open ? <Box handleModal={handleModal} /> : null}
+      {open ? <Box handleModal={handleModal} setAddress={setAddress} /> : null}
       <Container>
         <Text>{title}</Text>
-        <Input onClick={handleModal} />
+        <Input onClick={handleModal} value={address} />
       </Container>
     </>
   );
