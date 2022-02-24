@@ -38,8 +38,10 @@ const DropDown = ({ title = "옵션1", options = ["S", "L", "XL", "XXL"] }) => {
     <Container>
       <Text>{title}</Text>
       <Select>
-        {options.map((option) => (
-          <Option value={option}>{option}</Option>
+        {options.map((option, index) => (
+          <Option key={index} value={option}>
+            {option}
+          </Option>
         ))}
       </Select>
     </Container>
