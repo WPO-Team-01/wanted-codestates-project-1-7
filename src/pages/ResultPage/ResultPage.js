@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Result } from "@/components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,6 +21,22 @@ const TitleBox = styled.div`
   width: 100%;
 `;
 
+const BtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Btn = styled.button`
+  background-color: skyblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
 const ResultBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,6 +44,7 @@ const ResultBox = styled.div`
 `;
 
 const ResultPage = () => {
+  const navigate = useNavigate();
   const formId = useParams().id;
   const [formList, setFormList] = useState([]);
   const [isLoading, setIsLoading] = useState(!formList.length ? true : false);
@@ -55,6 +72,9 @@ const ResultPage = () => {
             눌러주세요.
           </TitleBox>
           <TitleBox>오류가 계속된다면, 폼 ID를 확인해주세요</TitleBox>
+          <BtnBox>
+            <Btn onClick={() => navigate("/")}>메인으로 돌아가기</Btn>
+          </BtnBox>
         </>
       )}
       {!isLoading && formList.length > 0 && (
