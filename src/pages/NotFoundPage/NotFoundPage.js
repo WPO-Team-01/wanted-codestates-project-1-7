@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -35,12 +35,12 @@ const Btn = styled.button`
 `;
 
 const NotFound = () => {
-  console.log(useLocation());
+  const navigate = useNavigate();
   return (
     <Container>
       <MessageBox>올바르지 않은 접근입니다.</MessageBox>
       <BtnBox>
-        <Btn>메인으로 돌아가기</Btn>
+        <Btn onClick={() => navigate("/")}>메인으로 돌아가기</Btn>
       </BtnBox>
     </Container>
   );

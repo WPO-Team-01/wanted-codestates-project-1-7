@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -34,11 +35,12 @@ const Btn = styled.button`
 `;
 
 const SubmittedePage = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <MessageBox>제출이 완료되었습니다!</MessageBox>
       <BtnBox>
-        <Btn>메인으로 돌아가기</Btn>
+        <Btn onClick={() => navigate("/")}>메인으로 돌아가기</Btn>
       </BtnBox>
     </Container>
   );
