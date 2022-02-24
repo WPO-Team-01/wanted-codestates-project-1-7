@@ -1,14 +1,21 @@
 import "./App.css";
-import { ResultPage } from "@/pages";
-import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MainPage, NotFoundPage, ResultPage } from "@/pages";
+import GlobalStyle from "@/styles/GlobalStyle";
+import { Container } from "@/styles/Container";
 
 function App() {
   return (
-    <div className="App">
-      {/* <h1>Hi!!</h1>
-      <ResultPage></ResultPage> */}
-      <GeneratedForm></GeneratedForm>
-    </div>
+    <Container>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />}></Route>
+          <Route path="/result/:id" element={<ResultPage />}></Route>
+          <Route path="/*" element={<NotFoundPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </Container>
   );
 }
 
