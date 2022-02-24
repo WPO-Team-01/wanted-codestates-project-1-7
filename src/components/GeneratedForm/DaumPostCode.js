@@ -21,7 +21,7 @@ const DaumPost = ({ setAddress }) => {
   return (
     <DaumPostcode
       onComplete={handleComplete}
-      style={{ width: "800px", height: "600px" }}
+      style={{ width: "800px", height: "500px" }}
       className="post-code"
     />
   );

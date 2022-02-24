@@ -49,7 +49,7 @@ const Box = ({ handleModal, setAddress }) => {
       <Wrapper onClick={handleModal} />
       <Container onClick={(e) => e.stopPropagation()}>
         <Header>
-          <Icon>&times;</Icon>
+          <Icon onClick={handleModal}>&times;</Icon>
           <Text>배송 주소</Text>
         </Header>
         <DaumPost setAddress={setAddress} />
