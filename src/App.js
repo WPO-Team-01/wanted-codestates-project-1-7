@@ -2,11 +2,16 @@ import "./App.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage, SubmittedePage } from "@/pages";
 import GlobalStyle from "@/styles/GlobalStyle";
-import { Container } from "@/styles/Container";
+import styled from "styled-components";
+
+const Layout = styled.div`
+  margin: 0 auto;
+  max-width: 1000px;
+`;
 
 function App() {
   return (
-    <Container>
+    <Layout>
       <GlobalStyle />
       <HashRouter>
         <Routes>
@@ -16,7 +21,7 @@ function App() {
           <Route path="/*" element={<NotFoundPage />}></Route>
         </Routes>
       </HashRouter>
-    </Container>
+    </Layout>
   );
 }
 
