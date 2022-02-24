@@ -16,12 +16,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently --names 'REACT,SERVER' -c 'bgBlue.bold,bgMagenta.bold' 'react-scripts start' 'node ./server/index.js'",
-    "build": "react-scripts build",
+    "start": "concurrently --names 'REACT,SERVER' -c 'bgBlue.bold,bgMagenta.bold' 'craco start' 'node ./server/index.js'",
+    "build": "craco build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "craco-start": "craco start",
-    "craco-build": "craco build"
+    "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [
