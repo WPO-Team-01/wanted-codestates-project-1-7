@@ -1,12 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage } from "@/pages";
-// import { GlobalStyle } from "@root/styles/GlobalStyle";
+import GlobalStyle from "@/styles/GlobalStyle";
+import { Container } from "@/styles/Container";
 
 function App() {
   return (
-    <>
-      {/* <GlobalStyle /> */}
+    <Container>
+      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
@@ -14,7 +15,7 @@ function App() {
           <Route path="/*" element={<NotFoundPage />}></Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </Container>
   );
 }
 
