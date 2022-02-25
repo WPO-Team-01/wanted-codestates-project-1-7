@@ -54,6 +54,7 @@ const Name = ({
         value={name}
         onChange={(e) => onChangeName(e)}
         placeholder={placeholder}
+        required
       />
       {name === "" || !onlyString.test(name) ? (
         <Caution>{caution}</Caution>
