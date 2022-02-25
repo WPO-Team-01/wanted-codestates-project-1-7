@@ -8,10 +8,14 @@ import {
   Input,
   EditPlaceholder,
   RequiredCheck,
+  TokenDiv,
+  Token,
+  TokenDeleteBtn,
   Wysiwyg,
 } from "./styled";
 import { MdOutlineDragIndicator } from "react-icons/md";
 import { FormInputType } from "../../constants/form";
+import { useEffect, useState, useRef } from "react";
 
 const DropdownOptions = {
   [FormInputType.Text]: "텍스트",
@@ -23,6 +27,34 @@ const DropdownOptions = {
 };
 
 const FieldObject = ({ form, handleDeleteForm, onChange }) => {
+  const tokenInputRef = useRef("");
+  const [tokens, setTokens] = useState([]);
+
+  useEffect(() => {
+    if ([FormInputType.Select].includes(form.type)) {
+      tokenInputRef.current.value = "";
+    }
+  }, [tokens]);
+
+  const handleMakeToken = (e) => {
+    if (e.target.value.includes(",")) {
+      if (tokenInputRef.current.value.trim()) {
+        let addToken = tokenInputRef.current.value.substring(0, tokenInputRef.current.value.length - 1);
+        setTokens((tagArr) => [...tokens, addToken]);
+      } else {
+        tokenInputRef.current.value = "";
+      }
+    }
+  };
+
+  const handleDeleteToken = (delIndex) => {
+    setTokens(
+      tokens.filter((elem, index) => {
+        return index !== delIndex;
+      })
+    );
+  };
+
   const handleChangeForm = (field, value) => {
     onChange(form.id, { [field]: value });
   };
@@ -64,7 +96,7 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
         </DragBtn>
         <DeleteBtn onClick={() => handleDeleteForm(form.id)}>x</DeleteBtn>
       </OptionBar>
-      {[FormInputType.Text, FormInputType.Phone].includes(form.type) && (
+      {([FormInputType.Text, FormInputType.Phone].includes(form.type) && (
         <EditPlaceholder>
           <Input
             placeholder="해당 필드에 들어갈 placeholder를 입력해 주세요"
@@ -75,7 +107,30 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
             onChange={(e) => handleChangeForm("placeholder", e.target.value)}
           />
         </EditPlaceholder>
-      )}
+      )) ||
+        ([FormInputType.Select].includes(form.type) && (
+          <EditPlaceholder>
+            {tokens.map((elem, index) => {
+              return (
+                <TokenDiv key={index}>
+                  <Token>{elem}</Token>
+                  <TokenDeleteBtn onClick={() => handleDeleteToken(index)}>
+                    x
+                  </TokenDeleteBtn>
+                </TokenDiv>
+              );
+            })}
+            <Input
+              ref={tokenInputRef}
+              type="text"
+              placeholder="옵션 (각 아이템은 콤마(,)로 구분합니다.)"
+              border={"none"}
+              width={"90%"}
+              height={"80%"}
+              onChange={handleMakeToken}
+            />
+          </EditPlaceholder>
+        ))}
       <Wysiwyg>
         <EditorSet
           value={
@@ -88,7 +143,7 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
               form.type === FormInputType.Agreement
                 ? "contents"
                 : "description",
-              html,
+              html
             )
           }
         />
