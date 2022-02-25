@@ -9,15 +9,14 @@ const Label = styled.div`
 `;
 
 const SavedForm = props => {
-  const { savedForm, isLoading } = props; //[{id:"phone"},{id:"address"}....]
+  const { savedForm } = props; //[{id:"phone"},{id:"address"}....]
 
   return (
     <div>
       <IoCheckboxOutline size='30' />
-      {!isLoading &&
-        savedForm.map(el => {
-          return <Label key={el.id}>{el.label}</Label>;
-        })}
+      {savedForm.map(el => {
+        return <Label key={el.id}>{el.label}</Label>;
+      })}
     </div>
   );
 };
