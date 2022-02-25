@@ -22,7 +22,7 @@ const DropdownOptions = {
   [FormInputType.Agreement]: "이용약관",
 };
 
-const FieldObject = ({ form, handleDeleteForm, onChange }) => {
+const FieldObject = ({ form, handleDeleteForm, onChange, onDrag }) => {
   const handleChangeForm = (field, value) => {
     onChange(form.id, { [field]: value });
   };
@@ -59,7 +59,7 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
           />
           <label>필수</label>
         </RequiredCheck>
-        <DragBtn>
+        <DragBtn {...onDrag}>
           <MdOutlineDragIndicator />
         </DragBtn>
         <DeleteBtn onClick={() => handleDeleteForm(form.id)}>x</DeleteBtn>
