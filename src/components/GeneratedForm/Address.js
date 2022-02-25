@@ -54,6 +54,7 @@ const Address = ({ title = "배송지" }) => {
             deleteInputValue();
           }}
           value={address}
+          onChange={() => {}}
         />
       </Container>
     </>
