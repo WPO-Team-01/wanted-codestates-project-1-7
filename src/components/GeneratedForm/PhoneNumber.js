@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -36,9 +36,9 @@ const PhoneNumber = ({
   type = "tel",
   title = "휴대폰 번호",
   caution = "휴대폰 번호 항목은 필수 정보입니다",
+  number,
+  setNumber,
 }) => {
-  const [Number, setNumber] = useState("");
-
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
   };
@@ -48,10 +48,10 @@ const PhoneNumber = ({
       <Text>{title}</Text>
       <Input
         type={type}
-        value={Number}
+        value={number}
         onChange={(e) => onChangeNumber(e)}
       ></Input>
-      {Number === "" ? <Caution>{caution}</Caution> : null}
+      {number === "" ? <Caution>{caution}</Caution> : null}
     </Container>
   );
 };

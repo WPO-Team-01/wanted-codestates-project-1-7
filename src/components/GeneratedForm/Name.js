@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -36,9 +36,9 @@ const Name = ({
   type = "text",
   title = "이름",
   caution = "이름 항목은 필수 정보입니다",
+  name,
+  setName,
 }) => {
-  const [name, setName] = useState("");
-
   const onChangeName = (e) => {
     setName(e.target.value);
   };
