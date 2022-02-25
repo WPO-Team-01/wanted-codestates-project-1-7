@@ -45,6 +45,7 @@ const GeneratedForm = () => {
   const [size, setSize] = useState(null);
   const [attachment, setAttachment] = useState("");
   const [checked, setChecked] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const { id } = useParams();
 
   let formData = {
@@ -67,6 +68,7 @@ const GeneratedForm = () => {
   };
 
   const postData = () => {
+    console.log("post");
     return axios
       .post(
         `https://damp-dawn-99272.herokuapp.com/api/forms/${id}/submit`,
@@ -75,11 +77,20 @@ const GeneratedForm = () => {
       .then((res) => console.log(res.data.success));
   };
 
+  const checkCompleted = () => {
+    if (name !== "" && number !== "" && address !== "" && checked) {
+      setCompleted(true);
+    } else {
+      setCompleted(false);
+    }
+  };
+
   useEffect(() => {
     getData();
-  }, []);
-  console.log(forms);
-  console.log(formData);
+    checkCompleted();
+  }, [name, number, address, checked]);
+  // console.log(forms);
+  // console.log(formData);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -164,7 +175,7 @@ const GeneratedForm = () => {
                     )
                   : null}
 
-                <Button postData={postData} />
+                <Button completed={completed} postData={postData} />
               </form>
             </SubContainer>
           </Container>
