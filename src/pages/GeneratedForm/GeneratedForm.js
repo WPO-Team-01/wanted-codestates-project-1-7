@@ -67,9 +67,10 @@ const GeneratedForm = () => {
     <Container>
       <SubContainer>
         {forms.length > 0
-          ? forms.map((form) =>
+          ? forms.map((form, index) =>
               form.id === "name" ? (
                 <Name
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
@@ -79,6 +80,7 @@ const GeneratedForm = () => {
                 />
               ) : form.id === "phone" ? (
                 <PhoneNumber
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
@@ -87,6 +89,7 @@ const GeneratedForm = () => {
                 />
               ) : form.id === "address" ? (
                 <Address
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
@@ -95,6 +98,7 @@ const GeneratedForm = () => {
                 />
               ) : form.id === "input_0" ? (
                 <DropDown
+                  key={index}
                   type={form.type}
                   label={form.label}
                   option={form.option}
@@ -104,6 +108,7 @@ const GeneratedForm = () => {
                 />
               ) : form.id === "input_1" ? (
                 <InputFile
+                  key={index}
                   type={form.type}
                   label={form.label}
                   required={form.required}
@@ -113,6 +118,7 @@ const GeneratedForm = () => {
                 />
               ) : form.id === "agreement_0" ? (
                 <CheckBox
+                  key={index}
                   type={form.type}
                   label={form.label}
                   required={form.required}

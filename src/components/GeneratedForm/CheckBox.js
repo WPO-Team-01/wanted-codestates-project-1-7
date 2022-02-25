@@ -48,7 +48,7 @@ const CheckBox = ({
         <Check checked={checked} onChange={() => {}} />
         <Span>{text}</Span>
       </SubContainer>
-      <Link to="/2">
+      <Link to="/agreement">
         <Arrow src="image/right-arrow.png" />
       </Link>
     </Container>

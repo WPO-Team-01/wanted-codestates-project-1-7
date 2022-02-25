@@ -5,6 +5,7 @@ import GlobalStyle from "@/styles/GlobalStyle";
 import styled from "styled-components";
 import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
 import Agreement from "./pages/GeneratedForm/Agreement";
+import CreateFormPage from "./pages/CreateFormPage/CreateFormPage";
 
 const Layout = styled.div`
   margin: 0 auto;
@@ -19,10 +20,11 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/result/:id" element={<ResultPage />}></Route>
+          <Route path="/create" element={<CreateFormPage />} />
           <Route path="/*" element={<NotFoundPage />}></Route>
 
-          <Route path="/1" element={<GeneratedForm />}></Route>
-          <Route path="/2" element={<Agreement />}></Route>
+          <Route path="/generated" element={<GeneratedForm />}></Route>
+          <Route path="/agreement" element={<Agreement />}></Route>
         </Routes>
       </BrowserRouter>
     </Layout>

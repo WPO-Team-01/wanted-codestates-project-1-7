@@ -41,7 +41,7 @@ const Agreement = () => {
   return (
     <Container>
       <Header>
-        <Link to="/1">
+        <Link to="/generated">
           <Img src="image/left-arrow.png" />
         </Link>
         <Title> 개인정보 수집 약관 동의</Title>
