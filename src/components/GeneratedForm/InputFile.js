@@ -84,7 +84,8 @@ const Descripton = styled.div`
 `;
 
 const InputFile = ({
-  title = "첨부파일 (선택)",
+  label = "첨부파일 (선택)",
+  type,
   description = "첨부파일은 위와 같이 입력할 수 있습니다",
   attachment,
   setAttachment,
@@ -111,7 +112,7 @@ const InputFile = ({
 
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>{label}</Text>
       {/* <Address /> */}
       <Label htmlFor="file-upload">
         {/* file preview가 있?없? */}
@@ -134,7 +135,7 @@ const InputFile = ({
         <FileInput
           id="file-upload"
           name="file-upload"
-          type="file"
+          type={type}
           accept="image/*"
           className="sr-only"
           onChange={onFileChange}

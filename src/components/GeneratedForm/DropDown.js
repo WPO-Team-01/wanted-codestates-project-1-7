@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -33,19 +33,14 @@ const Option = styled.option`
   margin: auto;
 `;
 
-const DropDown = ({
-  title = "옵션1",
-  options = ["S", "L", "XL", "XXL"],
-  size,
-  setSize,
-}) => {
+const DropDown = ({ label, options, setSize }) => {
   const onChangeSize = (e) => {
     setSize(e.target.value);
   };
 
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>{label}</Text>
       <Select onChange={(e) => onChangeSize(e)}>
         {options.map((option, index) => (
           <Option key={index} value={option}>

@@ -13,8 +13,8 @@ const Container = styled.div`
   color: white;
 `;
 
-const Button = ({ name = "제출하기" }) => {
-  return <Container>{name}</Container>;
+const Button = ({ name = "제출하기", postData }) => {
+  return <Container onClick={postData}>{name}</Container>;
 };
 
 export default Button;
