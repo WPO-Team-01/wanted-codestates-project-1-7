@@ -44,9 +44,9 @@ const SavedForm = props => {
     <div>
       {savedForm.map(el => {
         return (
-          <ListWrap>
+          <ListWrap key={el.id}>
             <FcCheckmark size='30' style={{ marginRight: 10 }} />
-            <Label key={el.id}>{el.label}</Label>
+            <Label>{el.label}</Label>
           </ListWrap>
         );
       })}

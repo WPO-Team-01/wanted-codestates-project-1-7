@@ -59,12 +59,10 @@ const Main = () => {
         setIsLoading(false);
         setForms(res.data.forms);
       }
-      // console.log(res.data.forms);
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(forms);
   return (
     <Container>
       <Title>생성된 폼 목록</Title>

@@ -87,7 +87,6 @@ const InputFile = ({ label = "첨부파일 (선택)", type, setAttachment }) => 
   const [filePreview, setFilePreview] = useState("");
 
   const onFileChange = (e) => {
-    console.log(e);
     const {
       target: { files },
     } = e;
