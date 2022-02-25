@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import FormList from "@/components/FormList/FormList";
 import styled from "styled-components";
 import axios from "axios";
@@ -14,11 +15,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  border: 1px solid grey;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   top: 10%;
+  font-size: 2.3rem;
 `;
 
 const BoxWrapper = styled.div`
@@ -31,42 +32,50 @@ const BoxWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  width: 30%;
-  height: 5%;
-  background-color: skyblue;
+  width: 20%;
+  height: 4.5vh;
+  background-color: #ff5a5f;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 500;
 `;
 
 const Main = () => {
   const [forms, setForms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const getFormList = async () => {
-      try {
-        const res = await axios
-          .get("https://damp-dawn-99272.herokuapp.com/api/forms")
-          .then((res) => setForms(res.data.forms));
-        console.log(res.data.forms);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getFormList();
-  }, []);
+  }, [isLoading]);
 
+  const getFormList = async () => {
+    try {
+      const res = await axios.get(
+        "https://damp-dawn-99272.herokuapp.com/api/forms",
+      );
+      if (res.data) {
+        setIsLoading(false);
+        setForms(res.data.forms);
+      }
+      // console.log(res.data.forms);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(forms);
   return (
     <Container>
       <Title>생성된 폼 목록</Title>
       <BoxWrapper>
         {forms.map((form) => (
-          <FormList form={form} />
+          <FormList form={form} key={form.id} />
         ))}
       </BoxWrapper>
-      <Button>폼 생성하기</Button>
+      <Link to="/create">
+        <Button>폼 생성하기</Button>
+      </Link>
     </Container>
   );
 };

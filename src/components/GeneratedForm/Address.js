@@ -26,9 +26,8 @@ const Input = styled.input`
   margin: auto;
 `;
 
-const Address = ({ title = "배송지" }) => {
+const Address = ({ title = "배송지", address, setAddress }) => {
   const [open, setOpen] = useState(false);
-  const [address, setAddress] = useState("");
 
   const handleModal = () => {
     setOpen((open) => !open);

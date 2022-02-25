@@ -1,21 +1,29 @@
-import React from "react";
-import { IoCheckboxOutline } from "react-icons/io5";
-import styled from "styled-components";
+import React from 'react';
+// import { IoCheckboxOutline } from 'react-icons/io5';
+import { FcCheckmark } from 'react-icons/fc';
+import styled from 'styled-components';
 
 const Label = styled.div`
-  width: 30%;
-  border: 1px dotted gray;
+  width: 100%;
   border-radius: 5px;
+  font-weight: 500;
 `;
-
-const SavedForm = (props) => {
+const ListWrap = styled.div`
+  display: flex;
+  width: 50%;
+`;
+const SavedForm = props => {
   const { savedForm } = props; //[{id:"phone"},{id:"address"}....]
 
   return (
     <div>
-      <IoCheckboxOutline size="30" />
-      {savedForm.map((el) => {
-        return <Label>{el.label}</Label>;
+      {savedForm.map(el => {
+        return (
+          <ListWrap>
+            <FcCheckmark size='30' style={{ marginRight: 10 }} />
+            <Label key={el.id}>{el.label}</Label>
+          </ListWrap>
+        );
       })}
     </div>
   );

@@ -32,7 +32,7 @@ const GeneratedForm = () => {
   const [address, setAddress] = useState("");
   const [size, setSize] = useState(null);
   const [attachment, setAttachment] = useState("");
-  const [boolean, setBoolean] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   console.log(forms);
 
@@ -42,7 +42,7 @@ const GeneratedForm = () => {
     address: address,
     input_0: size,
     input_1: attachment,
-    agreement_0: boolean,
+    agreement_0: checked,
   };
 
   const getData = () => {
@@ -62,51 +62,69 @@ const GeneratedForm = () => {
   };
 
   useEffect(() => getData(), []);
-
+  console.log(formData);
   return (
     <Container>
       <SubContainer>
         {forms.length > 0
-          ? forms.map((form) =>
+          ? forms.map((form, index) =>
               form.id === "name" ? (
                 <Name
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
                   placeholder={form.placeholder}
+                  name={name}
+                  setName={setName}
                 />
               ) : form.id === "phone" ? (
                 <PhoneNumber
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
+                  number={number}
+                  setNumber={setNumber}
                 />
               ) : form.id === "address" ? (
                 <Address
+                  key={index}
                   type={form.type}
                   required={form.required}
                   label={form.label}
+                  address={address}
+                  setAddress={setAddress}
                 />
               ) : form.id === "input_0" ? (
                 <DropDown
+                  key={index}
                   type={form.type}
                   label={form.label}
                   option={form.option}
                   required={form.required}
+                  size={size}
+                  setSize={setSize}
                 />
               ) : form.id === "input_1" ? (
                 <InputFile
+                  key={index}
                   type={form.type}
                   label={form.label}
                   required={form.required}
                   description={form.description}
+                  attachment={attachment}
+                  setAttachment={setAttachment}
                 />
               ) : form.id === "agreement_0" ? (
                 <CheckBox
+                  key={index}
                   type={form.type}
                   label={form.label}
                   required={form.required}
                   contents={form.contents}
+                  checked={checked}
+                  setChecked={setChecked}
                 />
               ) : null
             )
