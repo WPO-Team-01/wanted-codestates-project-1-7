@@ -15,8 +15,7 @@ const Container = styled.div`
 const TitleBox = styled.div`
   font-size: 1.5rem;
   font-weight: 700;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border-bottom: 1px solid #999;
   padding: 0.5rem;
   width: 100%;
 `;
@@ -41,6 +40,11 @@ const ResultBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  min-height: 70vh;
+  padding: 0.8rem;
+  border: 1px solid #999;
+  border-radius: 8px;
 `;
 
 const ResultPage = () => {
