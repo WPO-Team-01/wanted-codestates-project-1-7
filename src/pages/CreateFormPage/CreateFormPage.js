@@ -1,5 +1,5 @@
 import FieldObject from "@/components/form/FieldObject";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   Layout,
@@ -12,12 +12,18 @@ import {
   FieldAddButton,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const CreateFormPage = () => {
   const [title, setTitle] = useState("");
   const [formList, setFormList] = useState([]);
+  const [fields, setfields] = useState(formList)
 
   const nagigate = useNavigate();
+
+  useEffect(()=>{
+    setfields([...formList]);
+  }, [formList]);
 
   const onCreateForm = () => {
     setFormList((prev) => [
@@ -41,6 +47,14 @@ const CreateFormPage = () => {
         return item;
       });
     });
+  };
+
+  const handleOnDragEnd = (result)=>{
+    const items = [...fields];
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setfields(items);
+
   };
 
   const onDeleteForm = (data) => {
@@ -68,16 +82,44 @@ const CreateFormPage = () => {
       <CommonInput value={title} onChange={(e) => setTitle(e.target.value)} />
       <KategorieText>필드목록 *</KategorieText>
       <ContentsDiv>
-        {formList.map((form) => {
-          return (
-            <FieldObject
-              key={form.id}
-              form={form}
-              handleDeleteForm={onDeleteForm}
-              onChange={handleChangeForm}
-            />
-          );
-        })}
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="fields">
+            {(provided) => (
+              <div
+                className="fields"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {fields.map((form, index) => {
+                  let strFormId = String(form.id);
+                  return (
+                    <Draggable
+                      key={form.id}
+                      draggableId={strFormId}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                        >
+                          <FieldObject
+                            key={form.id}
+                            form={form}
+                            handleDeleteForm={onDeleteForm}
+                            onChange={handleChangeForm}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </ContentsDiv>
       <FieldAddButton onClick={onCreateForm}>필드 추가하기</FieldAddButton>
       <RightLayout>
