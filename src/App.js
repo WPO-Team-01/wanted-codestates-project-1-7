@@ -24,7 +24,7 @@ function App() {
           <Route path="/create" element={<CreateFormPage />} />
           <Route path="/*" element={<NotFoundPage />}></Route>
 
-          <Route path="/generated" element={<GeneratedForm />}></Route>
+          <Route path="/generated/:id" element={<GeneratedForm />}></Route>
           <Route path="/agreement" element={<Agreement />}></Route>
         </Routes>
       </HashRouter>

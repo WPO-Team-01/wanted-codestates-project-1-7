@@ -51,6 +51,7 @@ const Name = ({
         value={name}
         onChange={(e) => onChangeName(e)}
         placeholder="주민등록상 이름 입력"
+        required
       />
       {name === "" ? <Caution>{caution}</Caution> : null}
     </Container>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.button`
   width: 400px;
   height: 52px;
   display: flex;
@@ -13,8 +13,8 @@ const Container = styled.div`
   color: white;
 `;
 
-const Button = ({ name = "제출하기" }) => {
-  return <Container>{name}</Container>;
+const Button = ({ name = "제출하기", postData }) => {
+  return <Container onClick={postData}>{name}</Container>;
 };
 
 export default Button;
