@@ -26,7 +26,7 @@ const Input = styled.input`
   margin: auto;
 `;
 
-const Address = ({ title = "배송지", address, setAddress }) => {
+const Address = ({ label, address, setAddress }) => {
   const [open, setOpen] = useState(false);
 
   const handleModal = () => {
@@ -46,7 +46,7 @@ const Address = ({ title = "배송지", address, setAddress }) => {
         />
       ) : null}
       <Container>
-        <Text>{title}</Text>
+        <Text>{label}</Text>
         <Input
           onClick={() => {
             handleModal();
@@ -54,6 +54,7 @@ const Address = ({ title = "배송지", address, setAddress }) => {
           }}
           value={address}
           onChange={() => {}}
+          required
         />
       </Container>
     </>

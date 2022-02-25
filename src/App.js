@@ -4,7 +4,6 @@ import { MainPage, NotFoundPage, ResultPage, SubmittedePage } from "@/pages";
 import GlobalStyle from "@/styles/GlobalStyle";
 import styled from "styled-components";
 import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
-import Agreement from "./pages/GeneratedForm/Agreement";
 import CreateFormPage from "./pages/CreateFormPage/CreateFormPage";
 
 const Layout = styled.div`

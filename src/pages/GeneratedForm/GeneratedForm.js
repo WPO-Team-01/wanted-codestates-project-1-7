@@ -7,6 +7,7 @@ import DropDown from "@/components/GeneratedForm/DropDown";
 import InputFile from "@/components/GeneratedForm/InputFile";
 import Button from "@/components/GeneratedForm/Button";
 import CheckBox from "@/components/GeneratedForm/CheckBox";
+import Agreement from "@/components/GeneratedForm/Modal/Agreement";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -25,9 +26,19 @@ const SubContainer = styled.section`
   width: 448px;
   height: 100%;
 `;
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  font-size: 24px;
+`;
 
 const GeneratedForm = () => {
   const [forms, setForms] = useState([]);
+  const [title, setTitle] = useState("");
+  const [agreement, setAgreement] = useState(false);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
@@ -35,8 +46,6 @@ const GeneratedForm = () => {
   const [attachment, setAttachment] = useState("");
   const [checked, setChecked] = useState(false);
   const { id } = useParams();
-
-  console.log(forms);
 
   let formData = {
     name: name,
@@ -50,7 +59,10 @@ const GeneratedForm = () => {
   const getData = () => {
     axios
       .get(`https://damp-dawn-99272.herokuapp.com/api/forms/${id}`)
-      .then((res) => setForms(res.data.form.data))
+      .then((res) => {
+        setForms(res.data.form.data);
+        setTitle(res.data.form.title);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -63,84 +75,102 @@ const GeneratedForm = () => {
       .then((res) => console.log(res.data.success));
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log(forms);
+  console.log(formData);
+
   const onSubmit = (e) => {
     e.preventDefault();
     postData();
   };
 
-  useEffect(() => getData(), []);
-  console.log(forms);
   return (
-    <Container>
-      <SubContainer>
-        <form onSubmit={onSubmit}>
-          {forms.length > 0
-            ? forms.map((form, index) =>
-                //Object.keys(form).map
-                form.id === "name" ? (
-                  <Name
-                    key={index}
-                    type={form.type}
-                    label={form.label}
-                    placeholder={form.placeholder}
-                    name={name}
-                    setName={setName}
-                  />
-                ) : form.id === "phone" ? (
-                  <PhoneNumber
-                    key={index}
-                    type={form.type}
-                    required={form.required}
-                    label={form.label}
-                    number={number}
-                    setNumber={setNumber}
-                  />
-                ) : form.id === "address" ? (
-                  <Address
-                    key={index}
-                    type={form.type}
-                    required={form.required}
-                    label={form.label}
-                    address={address}
-                    setAddress={setAddress}
-                  />
-                ) : form.id === "input_0" ? (
-                  <DropDown
-                    key={index}
-                    type={form.type}
-                    label={form.label}
-                    option={form.option}
-                    required={form.required}
-                    size={size}
-                    setSize={setSize}
-                  />
-                ) : form.id === "input_1" ? (
-                  <InputFile
-                    key={index}
-                    type={form.type}
-                    label={form.label}
-                    required={form.required}
-                    description={form.description}
-                    attachment={attachment}
-                    setAttachment={setAttachment}
-                  />
-                ) : form.id === "agreement_0" ? (
-                  <CheckBox
-                    key={index}
-                    type={form.type}
-                    label={form.label}
-                    required={form.required}
-                    contents={form.contents}
-                    checked={checked}
-                    setChecked={setChecked}
-                  />
-                ) : null
-              )
-            : null}
-          <Button />
-        </form>
-      </SubContainer>
-    </Container>
+    <>
+      {agreement ? (
+        <>
+          <Agreement setAgreement={setAgreement} />
+        </>
+      ) : (
+        <>
+          <Container>
+            <SubContainer>
+              <form onSubmit={onSubmit}>
+                <Title>{title}</Title>
+                {forms.length > 0
+                  ? forms.map((form, index) =>
+                      form.id === "name" ? (
+                        <Name
+                          key={index}
+                          type={form.type}
+                          required={form.required}
+                          label={form.label}
+                          placeholder={form.placeholder}
+                          name={name}
+                          setName={setName}
+                        />
+                      ) : form.id === "phone" ? (
+                        <PhoneNumber
+                          key={index}
+                          type={form.type}
+                          required={form.required}
+                          label={form.label}
+                          number={number}
+                          setNumber={setNumber}
+                        />
+                      ) : form.id === "address" ? (
+                        <Address
+                          key={index}
+                          type={form.type}
+                          required={form.required}
+                          label={form.label}
+                          address={address}
+                          setAddress={setAddress}
+                        />
+                      ) : form.id === "input_0" ? (
+                        <DropDown
+                          key={index}
+                          type={form.type}
+                          label={form.label}
+                          options={form.options}
+                          required={form.required}
+                          size={size}
+                          setSize={setSize}
+                        />
+                      ) : form.id === "input_1" ? (
+                        <InputFile
+                          key={index}
+                          type={form.type}
+                          label={form.label}
+                          required={form.required}
+                          description={form.description}
+                          attachment={attachment}
+                          setAttachment={setAttachment}
+                        />
+                      ) : form.id === "agreement_0" ? (
+                        <CheckBox
+                          key={index}
+                          type={form.type}
+                          label={form.label}
+                          required={form.required}
+                          contents={form.contents}
+                          checked={checked}
+                          setChecked={setChecked}
+                          agreement={agreement}
+                          setAgreement={setAgreement}
+                        />
+                      ) : null
+                    )
+                  : null}
+
+                <Button postData={postData} />
+              </form>
+            </SubContainer>
+          </Container>
+        </>
+      )}
+    </>
   );
 };
 

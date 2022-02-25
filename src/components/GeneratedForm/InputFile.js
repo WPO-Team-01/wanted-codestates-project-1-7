@@ -83,12 +83,7 @@ const Descripton = styled.div`
   font-size: 12px;
 `;
 
-const InputFile = ({
-  title = "첨부파일 (선택)",
-  description,
-  attachment,
-  setAttachment,
-}) => {
+const InputFile = ({ label = "첨부파일 (선택)", type, setAttachment }) => {
   const [filePreview, setFilePreview] = useState("");
 
   const onFileChange = (e) => {
@@ -106,7 +101,7 @@ const InputFile = ({
 
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>{label}</Text>
       {/* <Address /> */}
       <Label htmlFor="file-upload">
         {/* file preview가 있?없? */}
@@ -129,7 +124,7 @@ const InputFile = ({
         <FileInput
           id="file-upload"
           name="file-upload"
-          type="file"
+          type={type}
           accept="image/*"
           onChange={onFileChange}
         />
