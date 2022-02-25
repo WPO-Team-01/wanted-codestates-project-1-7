@@ -56,7 +56,7 @@ const CreateFormPage = () => {
     const items = [...fields];
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-    setfields(items);
+    setFormList(items);
 
   };
 
