@@ -8,7 +8,7 @@ module.exports = {
       return whenProd(() => {
         const output = {
           ...webpackConfig.output,
-          path: path.resolve(__dirname, "build"),
+          path: path.resolve(__dirname, "docs"),
           publicPath: "./",
         };
 
