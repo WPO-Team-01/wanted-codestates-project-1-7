@@ -32,9 +32,11 @@ const Arrow = styled.img`
   height: 25px;
 `;
 
-const CheckBox = ({ text = "개인정보 수집 약관 동의 (필수)" }) => {
-  const [checked, setChecked] = useState(false);
-
+const CheckBox = ({
+  text = "개인정보 수집 약관 동의 (필수)",
+  checked,
+  setChecked,
+}) => {
   const handleCheckBox = () => {
     setChecked(!checked);
   };

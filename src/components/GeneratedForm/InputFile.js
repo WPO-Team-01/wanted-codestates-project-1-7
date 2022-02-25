@@ -86,8 +86,9 @@ const Descripton = styled.div`
 const InputFile = ({
   title = "첨부파일 (선택)",
   description = "첨부파일은 위와 같이 입력할 수 있습니다",
+  attachment,
+  setAttachment,
 }) => {
-  const [attachment, setAttachment] = useState("");
   const [filePreview, setFilePreview] = useState("");
 
   const onFileChange = (e) => {
