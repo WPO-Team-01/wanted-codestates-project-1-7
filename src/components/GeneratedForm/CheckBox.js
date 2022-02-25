@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -32,25 +31,24 @@ const Arrow = styled.img`
   height: 25px;
 `;
 
-const CheckBox = ({
-  text = "개인정보 수집 약관 동의 (필수)",
-  checked,
-  setChecked,
-}) => {
+const CheckBox = ({ label, checked, setChecked, setAgreement }) => {
   const handleCheckBox = () => {
     setChecked(!checked);
+  };
+
+  const openAgreement = () => {
+    setAgreement(true);
   };
 
   return (
     <Container>
       <SubContainer onClick={handleCheckBox}>
         <Img src={checked ? "image/checked.png" : "image/unChecked.png"} />
-        <Check checked={checked} onChange={() => {}} />
-        <Span>{text}</Span>
+        <Check checked={checked} onChange={() => {}} required />
+        <Span>{label}</Span>
       </SubContainer>
-      <Link to="/agreement">
-        <Arrow src="image/right-arrow.png" />
-      </Link>
+
+      <Arrow src="image/right-arrow.png" onClick={openAgreement} />
     </Container>
   );
 };

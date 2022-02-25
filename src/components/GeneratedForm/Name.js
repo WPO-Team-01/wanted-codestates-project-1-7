@@ -34,25 +34,31 @@ const Caution = styled.div`
 
 const Name = ({
   type = "text",
-  title = "이름",
+  label,
+  placeholder,
   caution = "이름 항목은 필수 정보입니다",
   name,
   setName,
 }) => {
+  const onlyString = /^[가-힣a-zA-Z]+$/;
+
   const onChangeName = (e) => {
     setName(e.target.value);
   };
 
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>{label}</Text>
       <Input
         type={type}
         value={name}
         onChange={(e) => onChangeName(e)}
-        placeholder="주민등록상 이름 입력"
+        placeholder={placeholder}
+        required
       />
-      {name === "" ? <Caution>{caution}</Caution> : null}
+      {name === "" || !onlyString.test(name) ? (
+        <Caution>{caution}</Caution>
+      ) : null}
     </Container>
   );
 };

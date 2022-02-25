@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -33,8 +33,8 @@ const Caution = styled.div`
 `;
 
 const PhoneNumber = ({
-  type = "tel",
-  title = "휴대폰 번호",
+  type,
+  label = "휴대폰 번호",
   caution = "휴대폰 번호 항목은 필수 정보입니다",
   number,
   setNumber,
@@ -43,14 +43,26 @@ const PhoneNumber = ({
     setNumber(e.target.value);
   };
 
+  useEffect(() => {
+    if (number.length === 10) {
+      setNumber(number.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+    if (number.length === 13) {
+      setNumber(
+        number.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [number]);
+
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>{label}</Text>
       <Input
         type={type}
         value={number}
         onChange={(e) => onChangeNumber(e)}
-      ></Input>
+        required
+      />
       {number === "" ? <Caution>{caution}</Caution> : null}
     </Container>
   );
