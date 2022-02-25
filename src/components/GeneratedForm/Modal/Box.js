@@ -22,25 +22,43 @@ const Container = styled.div`
 const Header = styled.div`
   width: 100%;
   height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+`;
+const Text = styled.div`
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
 `;
 const Icon = styled.span`
   display: flex;
   align-items: center;
   margin-left: 10px;
-  font-size: 36px;
+  font-size: 24px;
   cursor: pointer;
 `;
 
-const Box = ({ handleModal }) => {
+const Box = ({ handleModal, address, setAddress }) => {
   return (
     <>
-      <Wrapper onClick={handleModal} />
-      <Header>
-        <Icon />
-      </Header>
-      <Container onClick={(e) => e.stopPropagation()}>
-        <DaumPost />
-      </Container>
+      {address === "" ? (
+        <>
+          <Wrapper onClick={handleModal} />
+          <Container onClick={(e) => e.stopPropagation()}>
+            <Header>
+              <Icon onClick={handleModal}>&times;</Icon>
+              <Text>배송 주소</Text>
+            </Header>
+
+            <DaumPost setAddress={setAddress} />
+          </Container>
+        </>
+      ) : null}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 0 auto;
+  margin-bottom: 20px;
 `;
 const Text = styled.div`
   display: flex;
@@ -33,13 +33,24 @@ const Option = styled.option`
   margin: auto;
 `;
 
-const DropDown = ({ title = "옵션1", options = ["S", "L", "XL", "XXL"] }) => {
+const DropDown = ({
+  title = "옵션1",
+  options = ["S", "L", "XL", "XXL"],
+  size,
+  setSize,
+}) => {
+  const onChangeSize = (e) => {
+    setSize(e.target.value);
+  };
+
   return (
     <Container>
       <Text>{title}</Text>
-      <Select>
-        {options.map((option) => (
-          <Option value={option}>{option}</Option>
+      <Select onChange={(e) => onChangeSize(e)}>
+        {options.map((option, index) => (
+          <Option key={index} value={option}>
+            {option}
+          </Option>
         ))}
       </Select>
     </Container>

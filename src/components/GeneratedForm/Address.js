@@ -8,7 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 0 auto;
+  margin-bottom: 20px;
 `;
 const Text = styled.div`
   display: flex;
@@ -26,18 +26,35 @@ const Input = styled.input`
   margin: auto;
 `;
 
-const Address = ({ title = "배송지" }) => {
+const Address = ({ title = "배송지", address, setAddress }) => {
   const [open, setOpen] = useState(false);
 
   const handleModal = () => {
     setOpen((open) => !open);
   };
+  const deleteInputValue = () => {
+    setAddress((address) => "");
+  };
+
   return (
     <>
-      {open ? <Box handleModal={handleModal} /> : null}
+      {open ? (
+        <Box
+          handleModal={handleModal}
+          address={address}
+          setAddress={setAddress}
+        />
+      ) : null}
       <Container>
         <Text>{title}</Text>
-        <Input onClick={handleModal} />
+        <Input
+          onClick={() => {
+            handleModal();
+            deleteInputValue();
+          }}
+          value={address}
+          onChange={() => {}}
+        />
       </Container>
     </>
   );

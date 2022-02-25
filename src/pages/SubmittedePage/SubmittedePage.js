@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -39,11 +39,11 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const NotFound = () => {
+const SubmittedePage = () => {
   const navigate = useNavigate();
   return (
     <Container>
-      <MessageBox>올바르지 않은 접근입니다.</MessageBox>
+      <MessageBox>제출이 완료되었습니다!</MessageBox>
       <BtnBox>
         <Btn onClick={() => navigate("/")}>메인으로 돌아가기</Btn>
       </BtnBox>
@@ -51,4 +51,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default SubmittedePage;
