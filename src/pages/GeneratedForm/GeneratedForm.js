@@ -111,7 +111,7 @@ const GeneratedForm = () => {
                 <Title>{title}</Title>
                 {forms.length > 0
                   ? forms.map((form, index) =>
-                      form.id === "name" ? (
+                      form.type === "text" ? (
                         <Name
                           key={index}
                           type={form.type}
@@ -121,7 +121,7 @@ const GeneratedForm = () => {
                           name={name}
                           setName={setName}
                         />
-                      ) : form.id === "phone" ? (
+                      ) : form.type === "phone" ? (
                         <PhoneNumber
                           key={index}
                           type={form.type}
@@ -130,7 +130,7 @@ const GeneratedForm = () => {
                           number={number}
                           setNumber={setNumber}
                         />
-                      ) : form.id === "address" ? (
+                      ) : form.type === "address" ? (
                         <Address
                           key={index}
                           type={form.type}
@@ -139,7 +139,7 @@ const GeneratedForm = () => {
                           address={address}
                           setAddress={setAddress}
                         />
-                      ) : form.id === "input_0" ? (
+                      ) : form.type === "select" ? (
                         <DropDown
                           key={index}
                           type={form.type}
@@ -149,7 +149,7 @@ const GeneratedForm = () => {
                           size={size}
                           setSize={setSize}
                         />
-                      ) : form.id === "input_1" ? (
+                      ) : form.type === "file" ? (
                         <InputFile
                           key={index}
                           type={form.type}
@@ -159,7 +159,7 @@ const GeneratedForm = () => {
                           attachment={attachment}
                           setAttachment={setAttachment}
                         />
-                      ) : form.id === "agreement_0" ? (
+                      ) : form.type === "agreement" ? (
                         <CheckBox
                           key={index}
                           type={form.type}
