@@ -47,6 +47,9 @@ export const SaveButton = styled(CommonButton)`
   color: white;
   font-weight: 800;
   margin-left: 10px;
+  &:disabled {
+    background-color: gray;
+  }
 `;
 
 export const FieldAddButton = styled(CommonButton)`

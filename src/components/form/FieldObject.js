@@ -45,8 +45,8 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
         </Dropdown>
         <Input
           placeholder="필드명을 입력해 주세요"
-          value={form.title}
-          onChange={(e) => handleChangeForm("title", e.target.value)}
+          value={form.label}
+          onChange={(e) => handleChangeForm("label", e.target.value)}
           height={"80%"}
           width={"100%"}
           border={"1px solid #ebeced"}
@@ -71,7 +71,7 @@ const FieldObject = ({ form, handleDeleteForm, onChange }) => {
             border={"none"}
             width={"90%"}
             height={"80%"}
-            value={form.placeholder}
+            value={form.placeholder ?? ""}
             onChange={(e) => handleChangeForm("placeholder", e.target.value)}
           />
         </EditPlaceholder>
