@@ -16,15 +16,14 @@ import { useNavigate } from "react-router-dom";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-
 const CreateFormPage = () => {
   const [title, setTitle] = useState("");
   const [formList, setFormList] = useState([]);
-  const [fields, setfields] = useState(formList)
+  const [fields, setfields] = useState(formList);
 
   const nagigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     setfields([...formList]);
   }, [formList]);
 
@@ -52,12 +51,11 @@ const CreateFormPage = () => {
     });
   };
 
-  const handleOnDragEnd = (result)=>{
+  const handleOnDragEnd = (result) => {
     const items = [...fields];
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     setFormList(items);
-
   };
 
   const onDeleteForm = (data) => {
@@ -103,11 +101,11 @@ const CreateFormPage = () => {
                     >
                       {(provided) => (
                         <div
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
                           ref={provided.innerRef}
+                          {...provided.draggableProps}
                         >
                           <FieldObject
+                            onDrag={provided.dragHandleProps}
                             key={form.id}
                             form={form}
                             handleDeleteForm={onDeleteForm}
