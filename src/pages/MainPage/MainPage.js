@@ -15,11 +15,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  border: 1px solid grey;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   top: 10%;
+  font-size: 2.3rem;
 `;
 
 const BoxWrapper = styled.div`
@@ -32,13 +32,13 @@ const BoxWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  width: 30%;
-  height: 5%;
-  background-color: skyblue;
+  width: 20%;
+  height: 4.5vh;
+  background-color: #ff5a5f;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 500;
 `;
 
@@ -64,7 +64,7 @@ const Main = () => {
       console.log(err);
     }
   };
-
+  console.log(forms);
   return (
     <Container>
       <Title>생성된 폼 목록</Title>
