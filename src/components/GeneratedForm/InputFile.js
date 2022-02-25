@@ -78,7 +78,7 @@ const FileInput = styled.input`
   white-space: nowrap;
   border-width: 0;
 `;
-const Descripton = styled.p`
+const Descripton = styled.div`
   display: flex;
   font-size: 12px;
 `;

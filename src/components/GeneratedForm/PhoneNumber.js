@@ -37,13 +37,12 @@ const PhoneNumber = ({
   title = "휴대폰 번호",
   caution = "휴대폰 번호 항목은 필수 정보입니다",
 }) => {
-  const [Number, setNumber] = useState(null);
+  const [Number, setNumber] = useState("");
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
   };
 
-  console.log(typeof Number);
   return (
     <Container>
       <Text>{title}</Text>

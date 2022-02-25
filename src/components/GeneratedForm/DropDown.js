@@ -34,7 +34,7 @@ const Option = styled.option`
 `;
 
 const DropDown = ({ title = "옵션1", options = ["S", "L", "XL", "XXL"] }) => {
-  const [Size, setSize] = useState(null);
+  const [size, setSize] = useState(null);
 
   const onChangeSize = (e) => {
     setSize(e.target.value);

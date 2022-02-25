@@ -43,7 +43,7 @@ const CheckBox = ({ text = "개인정보 수집 약관 동의 (필수)" }) => {
     <Container>
       <SubContainer onClick={handleCheckBox}>
         <Img src={checked ? "image/checked.png" : "image/unChecked.png"} />
-        <Check checked={checked} />
+        <Check checked={checked} onChange={() => {}} />
         <Span>{text}</Span>
       </SubContainer>
       <Link to="/2">
