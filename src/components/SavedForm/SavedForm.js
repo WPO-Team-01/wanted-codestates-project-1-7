@@ -22,8 +22,9 @@ const ButtonWrapper = styled.div`
 const Button1 = styled.button`
   width: 100%;
   height: 4vh;
-  background-color: #62aaff;
+  background-color: navy;
   border: none;
+  color: #fff;
   border-radius: 5px;
   font-weight: 600;
 `;
@@ -50,7 +51,7 @@ const SavedForm = props => {
         );
       })}
       <ButtonWrapper>
-        <Link to='/generated'>
+        <Link to={`/generated/${formId}`}>
           <Button1>폼 작성하기</Button1>
         </Link>
         <Link to={`/result/${formId}`}>

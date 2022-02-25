@@ -17,7 +17,7 @@ const WrapperTitle = styled.div`
 `;
 const Title = styled.h2`
   width: 25%;
-  margin-left: 5%;
+  margin-left: 2%;
 `;
 
 function FormList(props) {
