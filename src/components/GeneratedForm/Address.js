@@ -54,6 +54,7 @@ const Address = ({ label, address, setAddress }) => {
           }}
           value={address}
           onChange={() => {}}
+          required
         />
       </Container>
     </>

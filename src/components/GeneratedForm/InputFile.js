@@ -83,13 +83,7 @@ const Descripton = styled.div`
   font-size: 12px;
 `;
 
-const InputFile = ({
-  label = "첨부파일 (선택)",
-  type,
-  description,
-  attachment,
-  setAttachment,
-}) => {
+const InputFile = ({ label = "첨부파일 (선택)", type, setAttachment }) => {
   const [filePreview, setFilePreview] = useState("");
 
   const onFileChange = (e) => {

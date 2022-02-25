@@ -61,7 +61,8 @@ const PhoneNumber = ({
         type={type}
         value={number}
         onChange={(e) => onChangeNumber(e)}
-      ></Input>
+        required
+      />
       {number === "" ? <Caution>{caution}</Caution> : null}
     </Container>
   );

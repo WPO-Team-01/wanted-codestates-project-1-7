@@ -44,7 +44,7 @@ const CheckBox = ({ label, checked, setChecked, setAgreement }) => {
     <Container>
       <SubContainer onClick={handleCheckBox}>
         <Img src={checked ? "image/checked.png" : "image/unChecked.png"} />
-        <Check checked={checked} onChange={() => {}} />
+        <Check checked={checked} onChange={() => {}} required />
         <Span>{label}</Span>
       </SubContainer>
 
