@@ -72,6 +72,31 @@ export const RequiredCheck = styled.div`
   background-color: #f8f8f9;
 `;
 
+export const TokenDiv = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 7pt;
+
+  border: 1px solid;
+  border-color: yellowgreen;
+  padding: 2px;
+  margin: 3px;
+`;
+
+export const Token = styled.div`
+  white-space: nowrap;
+  margin-left: 5px;
+  color:yellowgreen;
+  width: 100%;
+`;
+
+export const TokenDeleteBtn = styled.div`
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 10pt;
+  margin-right: 5px;
+`;
+
 export const Wysiwyg = styled.div`
   border: 1px solid #ebeced;
   border-top: none;
