@@ -3,6 +3,8 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { MainPage, NotFoundPage, ResultPage, SubmittedePage } from "@/pages";
 import GlobalStyle from "@/styles/GlobalStyle";
 import styled from "styled-components";
+import GeneratedForm from "./pages/GeneratedForm/GeneratedForm";
+import Agreement from "./pages/GeneratedForm/Agreement";
 import CreateFormPage from "./pages/CreateFormPage/CreateFormPage";
 
 const Layout = styled.div`
@@ -21,6 +23,9 @@ function App() {
           <Route path="/submitted/:id" element={<SubmittedePage />}></Route>
           <Route path="/create" element={<CreateFormPage />} />
           <Route path="/*" element={<NotFoundPage />}></Route>
+
+          <Route path="/generated" element={<GeneratedForm />}></Route>
+          <Route path="/agreement" element={<Agreement />}></Route>
         </Routes>
       </HashRouter>
     </Layout>
