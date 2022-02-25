@@ -85,7 +85,7 @@ const Descripton = styled.div`
 
 const InputFile = ({
   title = "첨부파일 (선택)",
-  description = "첨부파일은 위와 같이 입력할 수 있습니다",
+  description,
   attachment,
   setAttachment,
 }) => {
@@ -97,15 +97,10 @@ const InputFile = ({
       target: { files },
     } = e;
     const imgFile = files[0];
-    const reader = new FileReader();
-    reader.onloadend = (finishedEvent) => {
-      const {
-        currentTarget: { result },
-      } = finishedEvent;
-      setAttachment(result);
-    };
-    reader.readAsDataURL(imgFile);
+
+    setAttachment(imgFile);
     const url = URL.createObjectURL(imgFile);
+
     setFilePreview(url);
   };
 
@@ -136,11 +131,10 @@ const InputFile = ({
           name="file-upload"
           type="file"
           accept="image/*"
-          className="sr-only"
           onChange={onFileChange}
         />
       </Label>
-      <Descripton>{description}</Descripton>
+      <Descripton>첨부파일은 위와 같이 입력할 수 있습니다</Descripton>
     </Container>
   );
 };

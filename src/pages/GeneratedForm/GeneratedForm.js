@@ -8,6 +8,7 @@ import InputFile from "@/components/GeneratedForm/InputFile";
 import Button from "@/components/GeneratedForm/Button";
 import CheckBox from "@/components/GeneratedForm/CheckBox";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Container = styled.section`
   display: flex;
@@ -33,6 +34,7 @@ const GeneratedForm = () => {
   const [size, setSize] = useState(null);
   const [attachment, setAttachment] = useState("");
   const [checked, setChecked] = useState(false);
+  const { id } = useParams();
 
   console.log(forms);
 
@@ -47,90 +49,96 @@ const GeneratedForm = () => {
 
   const getData = () => {
     axios
-      .get("https://damp-dawn-99272.herokuapp.com/api/forms")
-      .then((res) => setForms(res.data.forms[0].data))
+      .get(`https://damp-dawn-99272.herokuapp.com/api/forms/${id}`)
+      .then((res) => setForms(res.data.form.data))
       .catch((err) => console.log(err));
   };
 
   const postData = () => {
-    axios
+    return axios
       .post(
-        `https://damp-dawn-99272.herokuapp.com/api/forms/:id/submit`,
+        `https://damp-dawn-99272.herokuapp.com/api/forms/${id}/submit`,
         formData
       )
       .then((res) => console.log(res.data.success));
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    postData();
+  };
+
   useEffect(() => getData(), []);
-  console.log(formData);
+  console.log(forms);
   return (
     <Container>
       <SubContainer>
-        {forms.length > 0
-          ? forms.map((form, index) =>
-              form.id === "name" ? (
-                <Name
-                  key={index}
-                  type={form.type}
-                  required={form.required}
-                  label={form.label}
-                  placeholder={form.placeholder}
-                  name={name}
-                  setName={setName}
-                />
-              ) : form.id === "phone" ? (
-                <PhoneNumber
-                  key={index}
-                  type={form.type}
-                  required={form.required}
-                  label={form.label}
-                  number={number}
-                  setNumber={setNumber}
-                />
-              ) : form.id === "address" ? (
-                <Address
-                  key={index}
-                  type={form.type}
-                  required={form.required}
-                  label={form.label}
-                  address={address}
-                  setAddress={setAddress}
-                />
-              ) : form.id === "input_0" ? (
-                <DropDown
-                  key={index}
-                  type={form.type}
-                  label={form.label}
-                  option={form.option}
-                  required={form.required}
-                  size={size}
-                  setSize={setSize}
-                />
-              ) : form.id === "input_1" ? (
-                <InputFile
-                  key={index}
-                  type={form.type}
-                  label={form.label}
-                  required={form.required}
-                  description={form.description}
-                  attachment={attachment}
-                  setAttachment={setAttachment}
-                />
-              ) : form.id === "agreement_0" ? (
-                <CheckBox
-                  key={index}
-                  type={form.type}
-                  label={form.label}
-                  required={form.required}
-                  contents={form.contents}
-                  checked={checked}
-                  setChecked={setChecked}
-                />
-              ) : null
-            )
-          : null}
-
-        <Button onClick={postData} />
+        <form onSubmit={onSubmit}>
+          {forms.length > 0
+            ? forms.map((form, index) =>
+                //Object.keys(form).map
+                form.id === "name" ? (
+                  <Name
+                    key={index}
+                    type={form.type}
+                    label={form.label}
+                    placeholder={form.placeholder}
+                    name={name}
+                    setName={setName}
+                  />
+                ) : form.id === "phone" ? (
+                  <PhoneNumber
+                    key={index}
+                    type={form.type}
+                    required={form.required}
+                    label={form.label}
+                    number={number}
+                    setNumber={setNumber}
+                  />
+                ) : form.id === "address" ? (
+                  <Address
+                    key={index}
+                    type={form.type}
+                    required={form.required}
+                    label={form.label}
+                    address={address}
+                    setAddress={setAddress}
+                  />
+                ) : form.id === "input_0" ? (
+                  <DropDown
+                    key={index}
+                    type={form.type}
+                    label={form.label}
+                    option={form.option}
+                    required={form.required}
+                    size={size}
+                    setSize={setSize}
+                  />
+                ) : form.id === "input_1" ? (
+                  <InputFile
+                    key={index}
+                    type={form.type}
+                    label={form.label}
+                    required={form.required}
+                    description={form.description}
+                    attachment={attachment}
+                    setAttachment={setAttachment}
+                  />
+                ) : form.id === "agreement_0" ? (
+                  <CheckBox
+                    key={index}
+                    type={form.type}
+                    label={form.label}
+                    required={form.required}
+                    contents={form.contents}
+                    checked={checked}
+                    setChecked={setChecked}
+                  />
+                ) : null
+              )
+            : null}
+          <Button />
+        </form>
       </SubContainer>
     </Container>
   );
